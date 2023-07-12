@@ -109,6 +109,8 @@ class MessageSender:
                     )
 
                 if response_wrapper.get('type') == 'update_group':
+                    import ipdb; ipdb.set_trace()
+                    print(response_wrapper)
                     return GroupV2.create_from_receive_dict(
                         response_wrapper.get('data', {})['v2']
                     )
@@ -563,4 +565,22 @@ class MessageSender:
                 'role': role,
                 'uuid': memberid
             }
+        })
+
+    async def update_group_avatar(self, group_id: str, avatar: str) -> GroupV2:
+        """
+        Update role of a member in the group
+
+        :param group_id: id of the group to update member role for.
+        :param memberid: id of the member
+        :param role: updated role of the member
+
+        :return: Returns the updated group object
+        """
+        return await self._send({
+            "type": "update_group",
+            "version": "v1",
+            "account": self._username,
+            "groupID": group_id,
+			"Avatar": avatar,
         })
