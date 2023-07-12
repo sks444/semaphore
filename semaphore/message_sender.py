@@ -582,5 +582,5 @@ class MessageSender:
             "version": "v1",
             "account": self._username,
             "groupID": group_id,
-			"Avatar": avatar,
+			"avatar": avatar,
         })
