@@ -109,8 +109,6 @@ class MessageSender:
                     )
 
                 if response_wrapper.get('type') == 'update_group':
-                    import ipdb; ipdb.set_trace()
-                    print(response_wrapper, 'coming herereee')
                     return GroupV2.create_from_receive_dict(
                         response_wrapper.get('data', {})['v2']
                     )
